@@ -7,7 +7,7 @@ type UnityOfWork() =
 
     interface Core.IUnityOfWork with
         member this.MarketData
-            with get() = new GenericRepository<MarketData>() :> Core.IRepository<MarketData>
+            with get() = new GenericRepository<MarketData>(context) :> Core.IRepository<MarketData>
 
         member this.Save =
             context.SaveChanges() |> ignore

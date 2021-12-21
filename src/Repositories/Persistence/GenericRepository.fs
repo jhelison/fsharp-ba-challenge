@@ -2,8 +2,7 @@ namespace Persistence
 
 open Microsoft.EntityFrameworkCore
 
-type GenericRepository<'T when 'T : not struct> () =
-    let context = new DataContext()
+type GenericRepository<'T when 'T : not struct> ( context : DataContext) =
 
     interface Core.IRepository<'T> with
         member this.All =
