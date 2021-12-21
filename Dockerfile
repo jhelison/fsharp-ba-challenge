@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/sdk:6.0.100
+FROM mcr.microsoft.com/dotnet/sdk:3.1.414
 
 RUN apt-get update && apt-get install -y
 

@@ -2,10 +2,11 @@ services:
 
   fs:
     build: ./
+    command: dotnet run --project src/Server/Server.fsproj
     volumes:
       - .:/app
     ports:
-      - 8000:8000
+      - 8085:8085
 
   db:
     image: postgres:14
