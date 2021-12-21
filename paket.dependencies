@@ -9,6 +9,9 @@ nuget Simple.Migrations
 nuget Microsoft.Data.Sqlite
 nuget Dapper
 
+nuget Microsoft.EntityFrameworkCore
+nuget Npgsql
+
 
 // [ FAKE GROUP ]
 group Build
