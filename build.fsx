@@ -6,8 +6,8 @@ open Fake.DotNet
 open Fake.IO
 open System.Threading
 
-let appPath = "./src/brick_abode_challenge/" |> Path.getFullName
-let projectPath = Path.combine appPath "brick_abode_challenge.fsproj"
+let appPath = "./src/Server/" |> Path.getFullName
+let projectPath = Path.combine appPath "Server.fsproj"
 
 
 Target.create "Clean" ignore
