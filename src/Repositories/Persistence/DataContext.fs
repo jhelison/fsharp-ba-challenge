@@ -1,7 +1,6 @@
 namespace Persistence
 
 open Microsoft.EntityFrameworkCore
-open Npgsql
 
 open Shared
 
