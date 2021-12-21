@@ -1,7 +1,6 @@
 namespace Books
 
 open Microsoft.AspNetCore.Http
-open FSharp.Control.Tasks.ContextInsensitive
 open Saturn
 
 module Controller =
