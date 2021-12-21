@@ -6,8 +6,10 @@ open Fake.DotNet
 open Fake.IO
 open System.Threading
 
-let appPath = "./src/Server/" |> Path.getFullName
-let projectPath = Path.combine appPath "Server.fsproj"
+let serverPath = "./src/Server/" |> Path.getFullName
+let serverProjectPath = Path.combine appPath "Server.fsproj"
+let sharedPath = "./src/Shared/" |> Path.getFullName
+let sharedProjectPath = Path.combine appPath "Shared.fsproj"
 
 
 Target.create "Clean" ignore
