@@ -4,14 +4,6 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Database.fs" />
-    <Compile Include="Config.fs" />
-
-    <Compile Include="Templates\App.fs" />
-    <Compile Include="Templates\Index.fs" />
-    <Compile Include="Templates\NotFound.fs" />
-    <Compile Include="Templates\InternalError.fs" />
-
     <Compile Include="Router.fs" />
     <Compile Include="Program.fs" />
 
