@@ -5,8 +5,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Core/IRepository.fs" />
+    <Compile Include="Core/IUnityOfWork.fs" />
     <Compile Include="Persistence/DataContext.fs" />
     <Compile Include="Persistence/GenericRepository.fs" />
+    <Compile Include="Persistence/UnityOfWork.fs" />
     <Compile Include="Library.fs" />
   </ItemGroup>
   <ItemGroup>
