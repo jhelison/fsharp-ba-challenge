@@ -4,6 +4,7 @@
     <TargetFramework>net6.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Core/IRepository.fs" />
     <Compile Include="Persistence/DataContext.fs" />
     <Compile Include="Library.fs" />
   </ItemGroup>
