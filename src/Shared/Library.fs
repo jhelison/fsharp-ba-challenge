@@ -1,5 +1,13 @@
 ﻿namespace Shared
 
-module Say =
-    let hello name =
-        printfn "Hello %s" name
+open System
+
+[<CLIMutable>]
+type MarketData =
+    {
+        id: int
+        date: DateTime
+        pair: string
+        price: float
+        quantity: int
+    }
