@@ -3,7 +3,7 @@ namespace MarketData
 open Microsoft.AspNetCore.Http
 open Saturn
 open Persistence
-open Shared
+open Models
 
 module Controller =
 

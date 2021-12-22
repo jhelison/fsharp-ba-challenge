@@ -2,7 +2,7 @@ namespace Persistence
 
 open Microsoft.EntityFrameworkCore
 
-open Shared
+open Models
 
 type DataContext() =
     inherit DbContext()

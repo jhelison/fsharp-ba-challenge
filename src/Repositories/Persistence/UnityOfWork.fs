@@ -1,6 +1,6 @@
 namespace Persistence
 
-open Shared
+open Models
 
 type UnityOfWork() =
     let context = new DataContext()
