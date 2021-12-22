@@ -7,4 +7,3 @@ type IRepository<'T> =
     abstract member Get: int -> 'T
     abstract member Add: 'T -> 'T
     abstract member Delete: int -> unit
-    abstract member Save: unit
