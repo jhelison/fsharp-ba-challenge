@@ -25,3 +25,8 @@ type GenericRepository<'T when 'T : not struct> ( context : DataContext) =
         member this.Delete id =
             let entity = context.Set<'T>().Find id
             context.Remove entity |> ignore
+
+        member this.Update entity : 'T =
+            context.Set<'T>().Attach entity |> ignore
+            context.Set<'T>().Update entity |> ignore
+            entity

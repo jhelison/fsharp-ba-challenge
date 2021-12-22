@@ -7,56 +7,51 @@ open Shared
 
 module Controller =
 
+    let unitOfWork = new UnityOfWork() :> Core.IUnityOfWork
 
     let indexAction (ctx : HttpContext) =
         task {
-            let unitOfWork = new UnityOfWork() :> Core.IUnityOfWork
             let marketData = unitOfWork.MarketData.All
             return marketData
         }
 
     let showAction (ctx: HttpContext) (id : string) =
         task {
-            let unitOfWork = new UnityOfWork() :> Core.IUnityOfWork
             let marketData = unitOfWork.MarketData.Get (int id)
-            return marketData
+            if obj.ReferenceEquals(marketData, null) then
+                return! Response.notFound ctx null
+            else
+            return! Response.ok ctx marketData
         }
 
     let createAction (ctx: HttpContext) =
         task {
-            let unitOfWork = new UnityOfWork() :> Core.IUnityOfWork
-
             let input = (Controller.getModel<MarketData> ctx).Result
 
             let marketData = unitOfWork.MarketData.Get input.id
             if not(obj.ReferenceEquals(marketData, null)) then
-                return Response.conflict
+                "IF" |> System.Console.WriteLine |> ignore
+                return! Response.conflict ctx null
             else
 
             unitOfWork.MarketData.Add input |> ignore
             unitOfWork.Save
-            return Response.ok
+            return! Response.ok ctx null
         }
 
     let updateAction (ctx: HttpContext) (id : string) =
         task {
-            // let unitOfWork = new UnityOfWork() :> Core.IUnityOfWork
+            //This action is buggy, fix after
+            let input = (Controller.getModel<MarketData> ctx).Result
 
-            // let marketData = unitOfWork.MarketData.Get (int id)
-            // if obj.ReferenceEquals(marketData, null) then
-            //     return Response.notFound
-            // else
+            unitOfWork.MarketData.Update input |> ignore
+            unitOfWork.Save |> ignore
 
-            // let input = (Controller.getModel<MarketData> ctx).Result
-
-            // return Response.ok
-            return "updateAction"
+            return Response.ok
         }
 
     let deleteAction (ctx: HttpContext) (id : string) =
         task {
-            let unitOfWork = new UnityOfWork() :> Core.IUnityOfWork
-
             let marketData = unitOfWork.MarketData.Get (int id)
             if obj.ReferenceEquals(marketData, null) then
                 return Response.notFound
