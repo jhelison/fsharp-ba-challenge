@@ -4,7 +4,7 @@
     <TargetFramework>net6.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Books\BooksController.fs" />
+     <Compile Include="MarketData\MarketDataController.fs" />
     <Compile Include="Router.fs" />
     <Compile Include="Program.fs" />
 

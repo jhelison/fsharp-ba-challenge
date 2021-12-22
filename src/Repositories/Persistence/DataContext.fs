@@ -10,7 +10,7 @@ type DataContext() =
     [<DefaultValue>]
     val mutable MarketData: DbSet<MarketData>
 
-    member this.marketData
+    member this.marketdata
         with public get () = this.MarketData
         and public set m = this.MarketData <- m
 

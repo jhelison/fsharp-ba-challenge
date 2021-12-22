@@ -41,5 +41,5 @@ let teste =
 let appRouter = router {
     // forward "/api" apiRouter
     forward "" browserRouter
-    forward "/books" Books.Controller.resource
+    forward "/market" MarketData.Controller.resource
 }
