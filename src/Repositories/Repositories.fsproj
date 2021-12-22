@@ -9,7 +9,6 @@
     <Compile Include="Persistence/DataContext.fs" />
     <Compile Include="Persistence/GenericRepository.fs" />
     <Compile Include="Persistence/UnityOfWork.fs" />
-    <Compile Include="Library.fs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Shared\Shared.fsproj" />
