@@ -25,23 +25,32 @@ module Controller =
     let createAction (ctx: HttpContext) =
         task {
             let unitOfWork = new UnityOfWork() :> Core.IUnityOfWork
-            //To do
-            // Add valitation if the id exists
+
             let input = (Controller.getModel<MarketData> ctx).Result
 
             let marketData = unitOfWork.MarketData.Get input.id
             if not(obj.ReferenceEquals(marketData, null)) then
-                return Response.conflict ctx "Conflito"
+                return Response.conflict
             else
 
             unitOfWork.MarketData.Add input |> ignore
             unitOfWork.Save
-            return Response.ok ctx "created with sucess"
+            return Response.ok
         }
 
     let updateAction (ctx: HttpContext) (id : string) =
         task {
-        return "updateAction"
+            // let unitOfWork = new UnityOfWork() :> Core.IUnityOfWork
+
+            // let marketData = unitOfWork.MarketData.Get (int id)
+            // if obj.ReferenceEquals(marketData, null) then
+            //     return Response.notFound
+            // else
+
+            // let input = (Controller.getModel<MarketData> ctx).Result
+
+            // return Response.ok
+            return "updateAction"
         }
 
     let deleteAction (ctx: HttpContext) (id : string) =
@@ -50,12 +59,12 @@ module Controller =
 
             let marketData = unitOfWork.MarketData.Get (int id)
             if obj.ReferenceEquals(marketData, null) then
-                return Response.notFound ctx "Not found"
+                return Response.notFound
             else
 
             unitOfWork.MarketData.Delete (int id) |> ignore
             unitOfWork.Save
-            return Response.ok ctx "deleted with sucess"
+            return Response.ok
         }
 
     let resource = controller {
