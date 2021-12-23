@@ -8,5 +8,5 @@ type MarketDataFilters =
       endDate: DateTime option
       minPrice: float option
       maxPrice: float option
-      minQuantity: float option
-      maxQuantity: float option }
+      minQuantity: int option
+      maxQuantity: int option }
