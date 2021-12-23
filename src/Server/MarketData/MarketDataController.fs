@@ -4,6 +4,7 @@ open Microsoft.AspNetCore.Http
 open Saturn
 open Persistence
 open Models
+open Shared
 
 module Controller =
 
@@ -11,15 +12,19 @@ module Controller =
 
     let indexAction (ctx : HttpContext) =
         task {
-            let marketData = unitOfWork.MarketData.All
+            let queryString = Controller.getQuery<MarketDataFilters> ctx
+            queryString |> System.Console.WriteLine |> ignore
+
+            let marketData = unitOfWork.MarketData.Filter queryString
+
             return marketData
         }
 
     let showAction (ctx: HttpContext) (id : string) =
         task {
             let marketData = unitOfWork.MarketData.Get (int id)
-            if obj.ReferenceEquals(marketData, null) then
-                return! Response.notFound ctx null
+            if obj.ReferenceEquals(marketData, None) then
+                return! Response.notFound ctx None
             else
             return! Response.ok ctx marketData
         }
@@ -29,14 +34,14 @@ module Controller =
             let input = (Controller.getModel<MarketData> ctx).Result
 
             let marketData = unitOfWork.MarketData.Get input.id
-            if not(obj.ReferenceEquals(marketData, null)) then
+            if not(obj.ReferenceEquals(marketData, None)) then
                 "IF" |> System.Console.WriteLine |> ignore
-                return! Response.conflict ctx null
+                return! Response.conflict ctx None
             else
 
             unitOfWork.MarketData.Add input |> ignore
             unitOfWork.Save
-            return! Response.ok ctx null
+            return! Response.ok ctx None
         }
 
     let updateAction (ctx: HttpContext) (id : string) =
@@ -53,7 +58,7 @@ module Controller =
     let deleteAction (ctx: HttpContext) (id : string) =
         task {
             let marketData = unitOfWork.MarketData.Get (int id)
-            if obj.ReferenceEquals(marketData, null) then
+            if obj.ReferenceEquals(marketData, None) then
                 return Response.notFound
             else
 
